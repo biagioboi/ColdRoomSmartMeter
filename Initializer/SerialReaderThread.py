@@ -11,13 +11,18 @@ class SerialReaderThread(Thread):
         self.maxTemperature = max_temperature
         self.port = port
         self.baud = baud
+        self.client = None
 
     def run(self):
         try:
-            serial_dev = serial.Serial(self.port, self.baud)
-            # TODO register the device in a channel on MQTT
+            serial_devs = serial.Serial(self.port, self.baud)
             while True:
-                # TODO publish the value on the reserved channel
+                for serial_dev in serial_devs:
+                    # if the content is not empty and the client is defined
+                    if serial_dev != "" and self.client is not None:
+                        print(serial_dev)
+                        # publish the value on the reserved channel
+                        self.client.publish("iot/fridge_temperature/" + self.fridgeName, serial_dev)
                 continue
         except SerialException:
             print("Device not found on port " + self.port)

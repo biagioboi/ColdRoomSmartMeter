@@ -3,10 +3,5 @@
     "port": "COM4",
     "maxTemperature": 30,
     "fridgeName": "test1"
-  },
-  {
-    "port": "COM4",
-    "maxTemperature": 30,
-    "fridgeName": "test1"
   }
 ]
