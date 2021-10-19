@@ -1,0 +1,44 @@
+metadata:
+  name: temperaturereader
+  labels:
+    nuclio.io/project-name: temperaturereader
+spec:
+  disable: true
+  handler: "main:handler"
+  runtime: nodejs
+  resources: {}
+  triggers:
+    default-http:
+      class: ""
+      kind: http
+      name: default-http
+      maxWorkers: 1
+    temperature_trigger:
+      class: ""
+      kind: mqtt
+      name: temperature_trigger
+      url: "172.19.139.242:1883"
+      username: guest
+      password: guest
+      attributes:
+        subscriptions:
+          - qos: 0
+            topic: "iot/fridge_temperature/#"
+  version: 1
+  build:
+    functionSourceCode: Y29uc3QgcmVzdCA9IHJlcXVpcmUoJ3Jlc3RsZXInKQ0KDQpmdW5jdGlvbiBiaW4yc3RyaW5nKGFycmF5KXsNCiAgICB2YXIgcmVzdWx0ID0gIiI7DQogICAgZm9yKHZhciBpID0gMDsgaSA8IGFycmF5Lmxlbmd0aDsgKytpKXsNCiAgICAgICAgcmVzdWx0ICs9IChTdHJpbmcuZnJvbUNoYXJDb2RlKGFycmF5W2ldKSk7DQogICAgfQ0KICAgIHJldHVybiByZXN1bHQ7DQp9DQoNCmV4cG9ydHMuaGFuZGxlciA9IGZ1bmN0aW9uKGNvbnRleHQsIGV2ZW50KSB7DQogICAgdmFyIGV2ZW50X3BhcnNlZCA9IEpTT04ucGFyc2UoSlNPTi5zdHJpbmdpZnkoZXZlbnQpKTsNCiAgICB2YXIgbWVzc2FnZSA9IGJpbjJzdHJpbmcoZXZlbnRfcGFyc2VkLmJvZHkuZGF0YSk7DQoJdmFyIG1lc3NhZ2Vfb2JqID0gSlNPTi5wYXJzZShtZXNzYWdlKTsNCiAgICBsZXQgZGV2aWNlX25hbWUgPSBldmVudF9wYXJzZWQudXJsLnNwbGl0KCIvIilbMl07DQoJaWYgKG1lc3NhZ2Vfb2JqLmN1cnJlbnRfdGVtcGVyYXR1cmUgPiBtZXNzYWdlX29iai5tYXhfdGVtcGVyYXR1cmUpIHsNCgkJcmVzdC5wb3N0KCdodHRwczovL21ha2VyLmlmdHR0LmNvbS90cmlnZ2VyL2hpZ2hfdGVtcGVyYXR1cmUvd2l0aC9rZXkvY3dlS2pReXhkUk8yeXp3Q1dGU3ZMJywge2RhdGE6IHt2YWx1ZTE6IG1lc3NhZ2Vfb2JqLmN1cnJlbnRfdGVtcGVyYXR1cmUsIHZhbHVlMjogZGV2aWNlX25hbWV9fSkub24oJ2NvbXBsZXRlJywgZnVuY3Rpb24oZGF0YSl7DQoJCQljb25zb2xlLmxvZyhkZXZpY2VfbmFtZSArICIgLSBDdXJyZW50IFRlbXBlcmF0dXJlOiAiICsgbWVzc2FnZV9vYmouY3VycmVudF90ZW1wZXJhdHVyZSArICLCsEMiKTsNCgkJfSk7DQoJfQ0KICAgIGNvbnRleHQuY2FsbGJhY2soIiIpOw0KfTs=
+    commands:
+      - 'npm install restler'
+    runtimeAttributes:
+      repositories: []
+    codeEntryType: sourceCode
+    timestamp: 1634652393
+    image: ""
+    noCache: false
+    offline: false
+    dependencies: []
+  loggerSinks:
+    - level: debug
+  platform: {}
+  securityContext: {}
+  eventTimeout: ""

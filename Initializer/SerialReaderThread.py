@@ -1,6 +1,7 @@
 from threading import Thread
 import serial
 from serial import SerialException
+import json
 
 
 class SerialReaderThread(Thread):
@@ -20,9 +21,18 @@ class SerialReaderThread(Thread):
                 for serial_dev in serial_devs:
                     # if the content is not empty and the client is defined
                     if serial_dev != "" and self.client is not None:
-                        print(serial_dev)
+                        serial_dev = serial_dev.decode('UTF-8').replace("\n", "").replace("\r", "")
                         # publish the value on the reserved channel
-                        self.client.publish("iot/fridge_temperature/" + self.fridgeName, serial_dev)
+                        try:
+                            value = float(serial_dev)
+                            # Send json {current_temperature: double, max_temperature: double}
+                            to_send = {
+                                'current_temperature': value,
+                                'max_temperature': self.maxTemperature
+                            }
+                            self.client.publish("iot/fridge_temperature/" + self.fridgeName, json.dumps(to_send))
+                        except ValueError:
+                            print("The value isn't a correct value.")
                 continue
         except SerialException:
             print("Device not found on port " + self.port)

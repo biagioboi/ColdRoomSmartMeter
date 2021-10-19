@@ -1,7 +1,7 @@
 [
   {
     "port": "COM4",
-    "maxTemperature": 30,
-    "fridgeName": "test1"
+    "maxTemperature": 30.5,
+    "fridgeName": "Frigo Cucina 1"
   }
 ]
