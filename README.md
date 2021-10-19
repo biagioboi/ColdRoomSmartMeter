@@ -12,3 +12,8 @@ The focus of this project start from the need by the big market or restaurant, t
 Actually this task is performed manually by an employee; and this could cause an effort for the big companies.<br>In order to reduce the effort on the work place, we can automatically detect the temperature inside the room by introducing a temperature sensor and then alert the employee if something is going wrong.
 
 ## Architecture
+Here's a resume of the architecture used for the project:
+
+![project_architecture.png](Images/project_architecture.png)
+
+to continue...
