@@ -4,7 +4,7 @@
 
 [1. Introduction](#Introduction): Problem and a possible solution<br>
 [2. Architecture](#Architecture): Project Architecture<br>
-[3. Project Structure](#Project Structure): File
+[3. Structure](#Structure): Project Structure
 
 ## Introduction
 
@@ -21,7 +21,7 @@ Since I haven't the wireless module on Arudino, I have executed a Python script 
 MQTT Broker ([RabbitMQ](https://www.rabbitmq.com/)) is executed over the [Docker](https://www.docker.com/) container in order to easily deploy it in production. Each time a device publish a new value, a [Nuclio](https://nuclio.io/) function is invoked using a RabbitMQ trigger that works as subs over the topic of all the cold room sensors, using the relative wildcard.<br><br>
 Nuclio function ([handler.js](Function/handler.js)) check the recieved value, if it is higher than the max_temperature, it execute an HTTP request to the [IFTTT](https://ifttt.com) WebHook that sends an alert message (containing the current temperature) on [Telegram](https://telegram.org/).
 
-## Project Structure
+## Structure
 - Function
   - **handler.js**: contains the Nuclio function, that is executed when a new value has been published;
   - **yaml/temperaturereader.yaml**: contains all the deploying informations of the function on nuclio;
