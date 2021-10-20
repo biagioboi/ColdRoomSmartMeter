@@ -3,7 +3,7 @@
 ## Summary
 
 [1. Introduction](#Introduction): Problem and a possible solution<br>
-[2. Architecture](#Architecture): Project Architecture
+[2. Architecture](#Architecture): Project Architecture<br>
 [3. Project Structure](#Project Structure): File
 
 ## Introduction
