@@ -1,5 +1,7 @@
 # Cold Room Smart Meter 
 
+![project_architecture.png](Images/arduino.jpg)
+
 ## Summary
 
 [1. Introduction](#Introduction): Problem and a possible solution<br>
