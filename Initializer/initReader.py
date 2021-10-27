@@ -1,5 +1,5 @@
 import json
-from Initializer.SerialReaderThread import SerialReaderThread
+from SerialReaderThread import SerialReaderThread
 import paho.mqtt.client as mqtt
 
 if __name__ == "__main__":

@@ -137,6 +137,15 @@ In order to execute Python script (since Arduino isn't equipped of wireless modu
 
 ------------------------------------------------------------------------------------------------------------------------------
 ### Execute script
+If pip is not installed, install it:
+```sh
+$ sudo apt-install python3-pip
+```
+Then, install the required dependencies:
+```sh
+$ pip install pyserial
+$ pip install paho-mqtt
+```
 Start script
 ```sh
 $ py3 initReader.py
